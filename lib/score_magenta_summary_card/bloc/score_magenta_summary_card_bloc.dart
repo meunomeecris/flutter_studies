@@ -16,10 +16,14 @@ class ScoreMagentaSummaryCardBloc
   void _onAppearView(
       OnAppearView event, Emitter<ScoreMagentaSummaryCardState> emit) {
     try {
-      final getScoreMagentaLive = GetScoreMagentaUserCaseLive().getScoreMagenta;
-      emit(ScoreMagentaSummaryCardUpDate(scoreMagenta: getScoreMagentaLive));
+      emit(ScoreMagentaSummaryCardUpDate(scoreMagenta: score()));
     } catch (error) {
       emit(ScoreMagentaSummaryCardError());
     }
+  }
+
+  ScoreMagenta score() {
+    // return GetScoreMagentaUserCaseLive().getScoreMagenta;
+    throw 1;
   }
 }

@@ -1,4 +1,6 @@
-class ScoreMagenta {
+import 'package:equatable/equatable.dart';
+
+class ScoreMagenta extends Equatable {
   int general;
   int food;
   int mental;
@@ -16,4 +18,7 @@ class ScoreMagenta {
     required this.physicalActivity,
     required this.qualityOfLife,
   });
+
+  @override
+  List<Object?> get props => [];
 }
