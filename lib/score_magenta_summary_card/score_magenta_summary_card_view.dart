@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_studies/score_magenta_summary_card/bloc/score_magenta_summary_card_bloc.dart';
+import 'package:flutter_studies/score_magenta_summary_card/domain/get_score_magenta_user_case.dart';
 
 class ScoreMagentaSummaryCardView extends StatelessWidget {
   ScoreMagentaSummaryCardView({super.key});
 
-  final ScoreMagentaSummaryCardBloc bloc = ScoreMagentaSummaryCardBloc();
+  final ScoreMagentaSummaryCardBloc bloc =
+      ScoreMagentaSummaryCardBloc(GetScoreMagentaUserCaseError());
 
   @override
   Widget build(BuildContext context) {
@@ -84,11 +86,7 @@ class ScoreMagentaSlideCustom extends StatelessWidget {
             value: score,
             allowedInteraction: SliderInteraction.slideThumb,
             activeColor: const Color.fromARGB(255, 138, 10, 123),
-            onChanged: (double value) {
-              // setState(() {
-              //   sleepScore = value;
-              // });
-            },
+            onChanged: (double value) {},
           ),
         ),
         Icon(

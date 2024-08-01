@@ -8,7 +8,10 @@ part 'score_magenta_summary_card_state.dart';
 
 class ScoreMagentaSummaryCardBloc
     extends Bloc<ScoreMagentaSummaryCardEvent, ScoreMagentaSummaryCardState> {
-  ScoreMagentaSummaryCardBloc() : super(ScoreMagentaSummaryCardInitial()) {
+  final GetScoreMagentaUserCase getScoreMagentaUserCase;
+
+  ScoreMagentaSummaryCardBloc(this.getScoreMagentaUserCase)
+      : super(ScoreMagentaSummaryCardInitial()) {
     on<OnAppearView>(_onAppearView);
     add(OnAppearView());
   }
@@ -16,14 +19,10 @@ class ScoreMagentaSummaryCardBloc
   void _onAppearView(
       OnAppearView event, Emitter<ScoreMagentaSummaryCardState> emit) {
     try {
-      emit(ScoreMagentaSummaryCardUpDate(scoreMagenta: score()));
+      emit(ScoreMagentaSummaryCardUpDate(
+          scoreMagenta: getScoreMagentaUserCase.scoreMagenta()));
     } catch (error) {
       emit(ScoreMagentaSummaryCardError());
     }
-  }
-
-  ScoreMagenta score() {
-    // return GetScoreMagentaUserCaseLive().getScoreMagenta;
-    throw 1;
   }
 }

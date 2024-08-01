@@ -1,4 +1,5 @@
 import 'package:flutter_studies/score_magenta_summary_card/bloc/score_magenta_summary_card_bloc.dart';
+import 'package:flutter_studies/score_magenta_summary_card/domain/get_score_magenta_user_case.dart';
 import 'package:flutter_studies/score_magenta_summary_card/domain/score_magenta_domain.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -14,18 +15,18 @@ void main() {
   );
 
   test("initial state is loading", () {
-    final sut = ScoreMagentaSummaryCardBloc();
+    final sut = ScoreMagentaSummaryCardBloc(GetScoreMagentaUserCaseLive());
     expect(sut.state, ScoreMagentaSummaryCardInitial());
   });
 
   test("data was updated on view appear", () {
-    final sut = ScoreMagentaSummaryCardBloc();
+    final sut = ScoreMagentaSummaryCardBloc(GetScoreMagentaUserCaseLive());
     expectLater(
         sut.stream, emits(ScoreMagentaSummaryCardUpDate(scoreMagenta: score)));
   });
 
   test("show throw an error", () {
-    final sut = ScoreMagentaSummaryCardBloc();
+    final sut = ScoreMagentaSummaryCardBloc(GetScoreMagentaUserCaseError());
     expectLater(sut.stream, emits(ScoreMagentaSummaryCardError()));
   });
 }
